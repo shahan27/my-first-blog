@@ -1,9 +1,12 @@
-{% extends 'blog/base.html' %}
-
-{% block content %}
-    <h1>New post</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+ {% extends 'blog/base.html' %}
+ 
+{% block title %}
+<a href="{% url 'user_post_list' pk=request.user.pk %}">{{ request.user }}'s New Post</a>
 {% endblock %}
+
+ {% block content %}
+     <form method="POST" class="post-form">{% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit" class="save btn btn-default">Save</button>
+     </form>
+ {% endblock %}
